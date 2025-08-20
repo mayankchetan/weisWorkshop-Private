@@ -1,0 +1,18 @@
+# Generic modeling options file to run standard WISDEM case
+General:
+    verbosity: False  # When set to True, the code prints to screen many infos
+WISDEM:
+    RotorSE:
+        flag: True
+        spar_cap_ss: spar_cap_ss
+        spar_cap_ps: spar_cap_ps
+        te_ss: te_reinforcement_ss
+        te_ps: te_reinforcement_ps
+    DriveSE:
+        flag: True
+    TowerSE:             # Options of TowerSE module
+        flag: True
+    FloatingSE:
+        flag: True
+    BOS:
+        flag: True
