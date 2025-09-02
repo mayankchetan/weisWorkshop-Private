@@ -1,5 +1,5 @@
 General:
-    verbosity: False  # When set to True, the code prints to screen many infos
+    verbosity: True  # When set to True, the code prints to screen many infos
 
 
 WISDEM:
@@ -26,7 +26,7 @@ WISDEM:
         #     geom: True
         #     tol: 1e-9
     DriveSE:
-        flag: True
+        flag: False
     FloatingSE:
         flag: False
         # symmetric_moorings: True

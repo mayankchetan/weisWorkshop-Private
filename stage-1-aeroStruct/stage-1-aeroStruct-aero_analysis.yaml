@@ -25,8 +25,8 @@ design_variables:
                 n_opt: 10 # Number of control points along blade span
                 max_decrease: 0.4 # Minimum multiplicative gain on existing chord at the n_opt locations
                 max_increase: 1.5 # Maximum multiplicative gain on existing chord at the n_opt locations
-                index_start: 1 # Lock the first two DVs from blade root
-                index_end: 10 # All DVs close to blade tip are active
+                index_start: 1 # Lock the first DV from blade root
+                index_end: 9 # All DVs close to blade tip are active
             af_positions:
                 flag: True
                 af_start: 4
