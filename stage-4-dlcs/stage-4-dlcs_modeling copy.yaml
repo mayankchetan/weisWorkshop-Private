@@ -1,15 +1,15 @@
 General:
     verbosity: False  # When set to True, the code prints to screen many infos
     openfast_configuration:
-        OF_run_fst: stage-3.5-semisub_of
-        # OF_run_dir: outputs/IEA_w_TMD_33
+        OF_run_fst: stage-4-dlc_20MW
+        OF_run_dir: outputs/dlcs
         save_iterations: True
         save_timeseries: True
         use_exe: True
         allow_fails: True
         fail_value: 9999
+        # model_only: True
         write_stdout: True
-
 WISDEM:
     RotorSE:
         flag: True
@@ -57,6 +57,7 @@ OpenFAST: # Options for WEIS fidelity level 3 = nonlinear time domain
         CompInflow: 1
         CompAero: 2
         CompServo: 1
+        CompSeaSt: 1
         CompHydro: 1
         CompSub: 0
         CompMooring: 3
@@ -68,9 +69,9 @@ OpenFAST: # Options for WEIS fidelity level 3 = nonlinear time domain
         FlapDOF2: True
         EdgeDOF: True
         TeetDOF: False
-        DrTrDOF: False
+        DrTrDOF: False 
         GenDOF: True
-        YawDOF: False
+        YawDOF: False  
         TwFADOF1 : True
         TwFADOF2 : True
         TwSSDOF1 : True
@@ -81,6 +82,10 @@ OpenFAST: # Options for WEIS fidelity level 3 = nonlinear time domain
         PtfmRDOF : True
         PtfmPDOF : True
         PtfmYDOF : True
+    AeroDyn:
+        BEM_Mod: 2
+        UA_Mod: 2
+        IntegrationMethod: 4
     # HydroDyn:
     #     WvLowCOff: 0.15708
     #     WvHiCOff: 3.2
@@ -94,16 +99,29 @@ OpenFAST: # Options for WEIS fidelity level 3 = nonlinear time domain
     #     PotMod: 1
         # WaveMod: 0
         # PotFile: examples/01_aeroelasticse/OpenFAST_models/IEA-15-240-RWT/IEA-15-240-RWT-UMaineSemi/HydroData/IEA-15-240-RWT-UMaineSemi
-RAFT:
-    flag: True
-    potential_model_override: 0
-    trim_ballast: 2
-    heave_tol: 1
-    save_designs: True
+# Level1:
+#     flag: True
+#     potential_model_override: 0
+#     trim_ballast: 2
+#     heave_tol: 1
+#     save_designs: True
 ROSCO:
     flag: True
+    # SD_Mode: 0
+    # PS_Mode: 3
+    # ps_percent: 0.9
+    # F_LPFType: 2
+    # F_NotchType: 2
+    # Fl_Mode: 2 
     tuning_yaml: iea20_semisub_rosco.yaml
-
+    # zeta_pc: [1]
+    # omega_pc: [0.1]
+    # U_pc: [12]
+    # zeta_vs: 0.85                     # Torque controller desired damping ratio [-]
+    # omega_vs: 0.12  
+    # twr_freq: 3.2
+    # ptfm_freq: 0.2
+    # Kp_float: -10
 DLC_driver:
     metocean_conditions:
         wind_speed: [4., 6., 8., 10., 12., 14., 16., 18., 20., 22., 24.]
@@ -116,21 +134,22 @@ DLC_driver:
         wave_height_50: 10.68
         wave_period_50: 14.2
     DLCs:
-        # - DLC: "1.1"    # local, lite
+        - DLC: "1.1"
+          n_seeds: 6
+          transient_time: 100.
+          analysis_time: 600.
+        - DLC: "1.4"
+          wind_speed: [9.158, 11.158, 13.158]
         #   n_seeds: 6
-        #   # wind_speed: [12.0, 18.0, 24.0]
-        #   transient_time: 120.0  # 0.
-        #   analysis_time: 600.0  # 10.
         - DLC: "1.6"    # kestrel
           n_seeds: 6
-        # - DLC: "1.6"    # local, lite
-        #   n_seeds: 1
-        #   wind_speed: [12.0, 18.0, 24.0]
-          transient_time: 120.0  # 0.
-          analysis_time: 600.0  # 10.
+          transient_time: 120.
+          analysis_time: 600.
+        - DLC: "5.1"
         - DLC: "6.1"
           n_seeds: 6
-          analysis_time: 600.0  # 10.
-          turbulent_wind:
+          transient_time: 120.
+          analysis_time: 600.
+        #   turbulent_wind:
             # GridHeight: 400
-            GridWidth: 400
+            # GridWidth: 400

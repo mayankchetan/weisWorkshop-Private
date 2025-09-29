@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import os
-from wisdem import run_wisdem
+from weis import weis_main
 from openmdao.utils.mpi import MPI
 
 
@@ -10,7 +10,7 @@ fname_wt_input = os.path.join(run_dir, "..", "stage-1-aeroStruct","outputs", "st
 fname_modeling_options = os.path.join(run_dir, "stage-2-controller_modeling.yaml")
 fname_analysis_options = os.path.join(run_dir, "stage-2-controller_analysis.yaml")
 
-wt_opt, modeling_options, analysis_options = run_wisdem(
+wt_opt, modeling_options, analysis_options = weis_main(
         fname_wt_input, fname_modeling_options, fname_analysis_options
     )
 

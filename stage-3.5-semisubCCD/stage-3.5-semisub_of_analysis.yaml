@@ -1,6 +1,6 @@
 general:
-    folder_output: outputs
-    fname_output: stage-3-semisub_raft
+    folder_output: outputs_of_newFix
+    fname_output: stage-3-semisub_of
 
 design_variables:
     # tower:
@@ -34,6 +34,25 @@ design_variables:
                       lower_bound: 10.0
                       upper_bound: 16.0
                       constant: True
+    control:
+        servo:
+            pitch_control:
+                omega:
+                    flag: True
+                    min: 0.025
+                    max: 0.5
+                zeta:
+                    flag: True
+                    min: 0.1
+                    max: 3.0
+                Kp_float:
+                    flag: True
+                    min: -40.0  # -0.25
+                    max: 0
+                ptfm_freq:
+                    flag: True
+                    max: 0.5
+
 
 constraints:
     tower:
@@ -64,7 +83,7 @@ constraints:
             upper_bound: 0.17453292519943295 # 10 deg
         metacentric_height:
             flag: True
-            lower_bound: 1.0 # 15.0 --> Dan's experience
+            lower_bound: 1.0
         pitch_period:
             flag: True
             lower_bound: 20. # +/- 10%
@@ -82,8 +101,6 @@ constraints:
         stress:
             flag: False # Set this to true but with the upper bound value of 22MW upwind
             upper_bound: 10.0
-            elements: [column1, column2, column3, Y_pontoon_lower1, Y_pontoon_lower2, Y_pontoon_lower3]
-            memid: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9]
         global_buckling:
             flag: False
         shell_buckling:
@@ -101,32 +118,29 @@ constraints:
             flag: True
             max: 6.0
         Std_PtfmPitch:
-            flag: False
+            flag: True
             max: 1.25  # Same as IEA-15MW with same DLCs
         nacelle_acceleration:
             flag: True
-            max: 0.4 # Change to 2.0 with new raft # prob wont be active with RAFT, maybe change to 0.5 in the future?
+            max: 2.0  # change to 2.0 with new RAFT release
+        rotor_overspeed:
+            flag: True
+            min: 0.0
+            max: 0.3
 
 merit_figure: structural_mass
 
 driver:
-    # optimization:
-    #     flag: True         # Flag to enable optimization
-    #     tol: 1e-4         # Optimality tolerance
-    #     max_major_iter: 200
-    #     max_minor_iter: 10000
-    #     step_size: 1e-4
-    #     step_calc: rel_avg
-    #     solver: SNOPT       # Optimization solver. Other options are 'SLSQP' - 'CONMIN'
-
     optimization:
         flag: True         # Flag to enable optimization
         tol: 1.e-3         # Optimality tolerance
-        maxiter: 100         # Maximum number of iterations (NLopt)
+        maxiter: 120         # Maximum number of iterations (NLopt)
+        max_iter: 120         # Maximum number of iterations (SLSQP)
         solver: LN_COBYLA       # Optimization solver. Other options are 'SLSQP' - 'CONMIN'
         penalty_exponent: 2.0     # constraint penalty exponent
+        # penalty_parameter: 2.0    # constraint penalty exponent
         run_parallel: True
 
 recorder:
-    flag: True                            # Flag to activate OpenMDAO recorder
-    file_name: log_opt.sql    # Name of OpenMDAO recorder
+    flag: True              # Flag to activate OpenMDAO recorder
+    file_name: log_opt.sql  # Name of OpenMDAO recorder

@@ -1,7 +1,7 @@
 General:
     verbosity: False  # When set to True, the code prints to screen many infos
     openfast_configuration:
-        OF_run_fst: stage-3.5-semisub_of
+        OF_run_fst: stage-2-controller
         # OF_run_dir: outputs/IEA_w_TMD_33
         save_iterations: True
         save_timeseries: True
@@ -9,6 +9,7 @@ General:
         allow_fails: True
         fail_value: 9999
         write_stdout: True
+        # nOFp_override: 40
 
 WISDEM:
     RotorSE:
@@ -102,7 +103,7 @@ RAFT:
     save_designs: True
 ROSCO:
     flag: True
-    tuning_yaml: iea20_semisub_rosco.yaml
+    tuning_yaml: ../source/iea22_rosco.yaml
 
 DLC_driver:
     metocean_conditions:
@@ -116,21 +117,7 @@ DLC_driver:
         wave_height_50: 10.68
         wave_period_50: 14.2
     DLCs:
-        # - DLC: "1.1"    # local, lite
-        #   n_seeds: 6
-        #   # wind_speed: [12.0, 18.0, 24.0]
-        #   transient_time: 120.0  # 0.
-        #   analysis_time: 600.0  # 10.
-        - DLC: "1.6"    # kestrel
+        - DLC: "1.1"    # kestrel
           n_seeds: 6
-        # - DLC: "1.6"    # local, lite
-        #   n_seeds: 1
-        #   wind_speed: [12.0, 18.0, 24.0]
           transient_time: 120.0  # 0.
           analysis_time: 600.0  # 10.
-        - DLC: "6.1"
-          n_seeds: 6
-          analysis_time: 600.0  # 10.
-          turbulent_wind:
-            # GridHeight: 400
-            GridWidth: 400
