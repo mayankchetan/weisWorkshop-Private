@@ -1,0 +1,9 @@
+*.p
+*.out
+*.outb
+*.bts
+*.sum
+*.dbg*
+*.ech
+*.dat
+*.fst

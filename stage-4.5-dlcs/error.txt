@@ -1,0 +1,1158 @@
+UserWarning: /kfs2/projects/weis/mchetan/weis-workshop/tools/rosco/rosco/toolbox/__init__.py:3
+pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.DeprecationWarning: /projects/weis/mchetan/weis-workshop/env/weis-workshop-script1/lib/python3.12/site-packages/pkg_resources/__init__.py:3146
+Deprecated call to `pkg_resources.declare_namespace('sphinxcontrib')`.
+Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packagesDeprecationWarning: /projects/weis/mchetan/weis-workshop/env/weis-workshop-script1/lib/python3.12/site-packages/jsonmerge/__init__.py:27
+Accessing Draft4Validator.resolver is deprecated as of v4.18.0, in favor of the https://github.com/python-jsonschema/referencing library, which provides more compliant referencing behavior as well as more flexible APIs for customization.PendingDeprecationWarning: /kfs2/projects/weis/mchetan/weis-workshop/tools/weis/weis/dtqpy/classes/DTQPy_CLASS_INTERNAL.py:10
+Importing from numpy.matlib is deprecated since 1.19.0. The matrix subclass is not the recommended way to represent matrices or deal with linear algebra (see https://docs.scipy.org/doc/numpy/user/numpy-for-matlab-users.html). Please adjust your code to use regular ndarray. DeprecationWarning: /projects/weis/mchetan/weis-workshop/env/weis-workshop-script1/lib/python3.12/site-packages/jsonmerge/__init__.py:27
+Accessing Draft4Validator.resolver is deprecated as of v4.18.0, in favor of the https://github.com/python-jsonschema/referencing library, which provides more compliant referencing behavior as well as more flexible APIs for customization.Traceback (most recent call last):
+  File "/kfs2/projects/weis/mchetan/weis-workshop/workshopFiles/stage-4-dlcs/stage-4-dlcs_driver.py", line 13, in <module>
+    wt_opt, modeling_options, analysis_options = weis_main(
+                                                 ^^^^^^^^^^
+  File "/kfs2/projects/weis/mchetan/weis-workshop/tools/weis/weis/main.py", line 110, in weis_main
+    wt_opt, modeling_options, opt_options = run_weis(fname_wt_input, 
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/kfs2/projects/weis/mchetan/weis-workshop/tools/weis/weis/glue_code/runWEIS.py", line 24, in run_weis
+    wt_initial = WindTurbineOntologyPythonWEIS(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/kfs2/projects/weis/mchetan/weis-workshop/tools/weis/weis/glue_code/gc_LoadInputs.py", line 40, in __init__
+    self.modeling_options = sch.load_modeling_yaml(fname_input_modeling)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/kfs2/projects/weis/mchetan/weis-workshop/tools/weis/weis/inputs/validation.py", line 67, in load_modeling_yaml
+    return _validate(finput, weis_schema, defaults=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/kfs2/projects/weis/mchetan/weis-workshop/tools/wisdem/wisdem/inputs/validation.py", line 195, in _validate
+    _jsonschema_validate_modified(unique_input_dict, schema_dict, cls=DefaultValidatingDraft7Validator, registry=registry)
+  File "/projects/weis/mchetan/weis-workshop/env/weis-workshop-script1/lib/python3.12/site-packages/windIO/validator.py", line 126, in _jsonschema_validate_modified
+    cls.check_schema(schema)
+  File "/projects/weis/mchetan/weis-workshop/env/weis-workshop-script1/lib/python3.12/site-packages/jsonschema/validators.py", line 317, in check_schema
+    raise exceptions.SchemaError.create_from(error)
+jsonschema.exceptions.SchemaError: {'type': 'object', 'properties': {'DLC': {'type': 'string', 'default': '1.1', 'enum': ['1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '2.1', '2.2', '2.3', '2.4', '3.1', '3.2', '3.3', '4.1', '4.2', '5.1', '6.1', '6.2', '6.3', '6.4', '6.5', '7.1', '7.2', '9.1', '9.2', '10.1', '10.2', '12.1', 'steady', 'step', 'ramp', 'AEP', 'freedecay'], 'description': 'IEC design load case to run. The DLCs currently supported are 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 5.1, 6.1, 6.3, and 6.4'}, 'wind_speed': {'type': 'array', 'description': 'Wind speeds for this DLC. If these are defined, ws_bin_size is neglected.', 'default': [], 'items': {'type': 'number', 'unit': 'm/s', 'minItems': 1, 'minimum': 0.0, 'maximum': 200.0, 'uniqueItems': True}}, 'ws_bin_size': {'type': 'number', 'default': 2, 'minimum': 0.01, 'maximum': 20.0, 'unit': 'm/s', 'description': 'Size of the wind speed bin between cut in and cout out wind speeds. It usually can be set to 2 m/s. This entry is neglected if the wind speeds are specified by the user.'}, 'n_seeds': {'type': 'integer', 'default': 1, 'minimum': 1, 'maximum': 100, 'description': 'Number of turbulent wind seeds drawn from the numpy random integer generator. This entry is neglected if the entry wind_seed is defined.  If DLC 1.4, number of waves seeds.'}, 'n_azimuth': {'type': 'integer', 'default': 1, 'minimum': 1, 'maximum': 100, 'description': 'Number of azimuth initial conditions to use (primarily during DLC 5.1)'}, 'wind_seed': {'type': 'array', 'default': [], 'description': 'Array of turbulent wind seeds for TurbSim. If these are defined, n_seeds is neglected.', 'items': {'type': 'integer', 'unit': 'none', 'minItems': 1, 'uniqueItems': True}}, 'wave_seed': {'type': 'array', 'default': [], 'description': 'Wave random number generator seeds for HydroDyn', 'items': {'type': 'integer', 'unit': 'none', 'minItems': 1, 'uniqueItems': True}}, 'wind_heading': {'type': 'array', 'description': 'Wind direction from north. This array must currently have either length=1, i.e. one constant value, or the same length of the array wind_speed.', 'default': [0.0], 'items': {'type': 'number', 'unit': 'deg', 'minItems': 1, 'minimum': -180.0, 'maximum': 180.0}}, 'yaw_misalign': {'type': 'array', 'description': 'Alignment of the nacelle with respect to north. This array must currently have either length=1, i.e. one constant value, or the same length of the array wind_speed. Default depends on DLC, specified in dlc_generator.', 'items': {'type': 'number', 'unit': 'deg', 'minItems': 1, 'minimum': -180.0, 'maximum': 180.0}}, 'wave_spectrum': {'type': 'array', 'description': 'Spectrum of the waves. This array must currently have either length=1, i.e. one constant spectrum, or the same length of the array wind_speed', 'items': {'type': 'str', 'enum': ['JONSWAP', 'unit'], 'minItems': 1}}, 'turbine_status': {'type': 'string', 'description': 'Status of the turbine, it can be either operating, parked-idling, or parked-still. Each DLC come with its default turbine status specified by the standards.', 'default': 'operating', 'enum': ['operating', 'parked-idling', 'parked-still']}, 'wave_period': {'type': 'array', 'description': 'Period between waves. If this array is populated by the user, then the field metocean_conditions is neglected. If wave_period is not defined, metocean_conditions will be used, either in the values provided by the user or with its default values (the first option is highly recommended).', 'default': [], 'items': {'type': 'number', 'unit': 's', 'minItems': 1, 'minimum': 0.0, 'maximum': 1000.0}}, 'wave_height': {'type': 'array', 'description': 'Height of the waves. If this array is populated by the user, then the field metocean_conditions is neglected. If wave_height is not defined, metocean_conditions will be used, either in the values provided by the user or with its default values (the first option is highly recommended).', 'default': [], 'items': {'type': 'number', 'unit': 'm', 'minItems': 1, 'minimum': 0.0, 'maximum': 100.0}}, 'wave_heading': {'type': 'array', 'description': 'Heading of the waves with respect to north. This array must currently have either length=1, i.e. one constant value, or the same length of the array wind_speed', 'default': [0.0], 'items': {'type': 'number', 'unit': 'deg', 'minItems': 1, 'minimum': -180.0, 'maximum': 180.0}}, 'wave_gamma': {'type': 'array', 'description': 'Peak-shape parameter of incident wave spectrum. If 0, the default from IEC61400-3 / HydroDyn is used. This array must currently have either length=1, i.e. one constant value, or the same length of the array wind_speed', 'default': [0.0], 'items': {'type': 'number', 'minItems': 1, 'minimum': 0.0, 'maximum': 10.0}}, 'probabilities': {'type': 'array', 'description': 'Probability of occurrance for each case. This entry is relevant only for DLC 1.2 and 6.4. This array must currently have either length=1, i.e. one constant value, or the same length of the array wind_speed.', 'default': [1.0], 'items': {'type': 'number', 'minItems': 1, 'minimum': 0.0, 'maximum': 1.0}}, 'IEC_WindType': {'type': 'string', 'default': 'NTM', 'enum': ['NTM', '1ETM', '2ETM', '3ETM', '1EWM1', '2EWM1', '3EWM1', '1EWM50', '2EWM50', '3EWM50', 'ECD', 'EDC', 'EOG', 'EWS', 'NWP', 'Steady', 'Ramp', 'Step'], 'description': "IEC turbulence type ('NTM'=normal, 'xETM'=extreme turbulence, 'xEWM1'=extreme 1-year wind, 'xEWM50'=extreme 50-year wind, where x=wind turbine class 1, 2, or 3), 'ECD'=extreme coherent gust with direction change, 'EDC'=extreme direction change, 'EOG'=extreme operating gust. Normally the user does not need to define this entry, 'EWS'='extreme wind shear'"}, 'analysis_time': {'type': 'number', 'unit': 's', 'minimum': 0.0, 'maximum': 10000.0, 'default': 0.0, 'description': 'This is the length of the simulation where outputs will be recorded. Its default is 600 seconds (10 minutes) for most simulations, except for the coherent cases where a shorter time window of 200 s is used.'}, 'transient_time': {'type': 'number', 'unit': 's', 'minimum': 0.0, 'maximum': 10000.0, 'default': 120.0, 'description': 'This is the length of the simulation where outputs will be discarded. Its default is 120 seconds (2 minutes) for all simulations. The total simulation time is the sum of analysis_time and transient_time'}, 'shutdown_time': {'type': 'number', 'unit': 's', 'minimum': 0.0, 'maximum': 100000.0, 'default': 9999, 'description': 'Time when shutdown occurs in DLC 5.1'}, 'wind_file': {'type': 'string', 'description': 'File path of custom wind file'}, 'TI_factor': {'type': 'number', 'unit': 'Percentage', 'description': 'The fraction of the TI, relative to the class defined in the geometry options or by turbulence_class'}, 'turbulence_class': {'type': 'string', 'enum': ['A+', 'A', 'B', 'C'], 'description': 'The class of turbulence, will overwrite class defined in geometry options. Only valid in the AEP DLC.'}, 'user_group': {'type': ['object', 'array'], 'items': {'type': 'object', 'description': 'Groups'}, 'default': {}, 'description': 'Define additional groups to alter DLCs or sweep additional paramters.  Users can input single values to change all of the simulations in a DLC, multiple values to add an additional group to sweep over, or a list of new groups in the yaml format.'}, 'turbulent_wind': {'type': 'object', 'default': {}, 'description': 'These are all inputs to TurbSim. These inputs usually do not need to be set unless you are trying to customize a DLC', 'properties': {'flag': {'type': 'boolean', 'default': False, 'description': 'Flag switching between steady wind and turbulent wind grid from TurbSim.'}, 'Echo': {'type': 'boolean', 'default': False, 'description': 'Echo input data to <RootName>.ech (flag)'}, 'RandSeed1': {'type': 'integer', 'default': 1, 'description': 'First random seed  (-2147483648 to 2147483647)'}, 'RandSeed2': {'default': 'RANLUX', 'description': 'Second random seed  (-2147483648 to 2147483647)'}, 'WrBHHTP': {'type': 'boolean', 'default': False, 'description': 'Output hub-height turbulence parameters in binary form  (Generates RootName.bin)'}, 'WrFHHTP': {'type': 'boolean', 'default': False, 'description': 'Output hub-height turbulence parameters in formatted form  (Generates RootName.dat)'}, 'WrADHH': {'type': 'boolean', 'default': False, 'description': 'Output hub-height time-series data in AeroDyn form  (Generates RootName.hh)'}, 'WrADFF': {'type': 'boolean', 'default': True, 'description': 'Output full-field time-series data in TurbSim/AeroDyn form (Generates RootName.bts)'}, 'WrBLFF': {'type': 'boolean', 'default': False, 'description': 'Output full-field time-series data in BLADED/AeroDyn form  (Generates RootName.wnd)'}, 'WrADTWR': {'type': 'boolean', 'default': False, 'description': 'Output tower time-series data (Generates RootName.twr)'}, 'WrFMTFF': {'type': 'boolean', 'default': False, 'description': 'Output full-field time-series data in formatted (readable) form  (Generates RootName.u, RootName.v, RootName.w)'}, 'WrACT': {'type': 'boolean', 'default': False, 'description': 'Output coherent turbulence time steps in AeroDyn form (Generates RootName.cts)'}, 'Clockwise': {'type': 'boolean', 'default': False, 'description': 'Clockwise rotation looking downwind (used only for full-field binary files - not necessary for AeroDyn)'}, 'ScaleIEC': {'type': 'integer', 'enum': [0, 1, 2], 'default': 0, 'description': 'Scale IEC turbulence models to exact target standard deviation [0=no additional scaling; 1=use hub scale uniformly; 2=use individual scales]'}, 'NumGrid_Z': {'type': 'integer', 'default': 25, 'minimum': 5, 'maximum': 100, 'description': 'Vertical grid-point matrix dimension'}, 'NumGrid_Y': {'type': 'integer', 'default': 25, 'minimum': 5, 'maximum': 100, 'description': 'Horizontal grid-point matrix dimension'}, 'TimeStep': {'type': 'number', 'default': 0.05, 'minimum': 0.0001, 'maximum': 1.0, 'unit': 's', 'description': 'Time step [seconds]'}, 'UsableTime': {'type': 'string', 'default': 'ALL', 'description': "Usable length of output time series [seconds] (program will add GridWidth/MeanHHWS seconds unless UsableTime is 'ALL')"}, 'HubHt': {'type': 'number', 'default': 0, 'minimum': 0, 'maximum': 500.0, 'unit': 'm', 'description': 'Hub height [m] (should be > 0.5*GridHeight)'}, 'GridHeight': {'type': 'number', 'default': 0, 'minimum': 0, 'maximum': 500.0, 'unit': 'm', 'description': 'Grid height [m]'}, 'GridWidth': {'type': 'number', 'default': 0, 'minimum': 0, 'maximum': 500.0, 'unit': 'm', 'description': 'Grid width [m] (should be >= 2*(RotorRadius+ShaftLength))'}, 'VFlowAng': {'type': 'number', 'default': 0.0, 'minimum': -90.0, 'maximum': 90.0, 'unit': 'deg', 'description': 'Vertical mean flow (uptilt) angle [degrees]'}, 'HFlowAng': {'type': 'number', 'default': 0.0, 'minimum': -90.0, 'maximum': 90.0, 'unit': 'deg', 'description': 'Horizontal mean flow (skew) angle [degrees]'}, 'TurbModel': {'type': 'string', 'enum': ['IECKAI', 'IECVKM', 'GP_LLJ', 'NWTCUP', 'SMOOTH', 'WF_UPW', 'WF_07D', 'WF_14D', 'TIDAL', 'API', 'USRINP', 'TIMESR', 'NONE'], 'default': 'IECKAI', 'description': 'Turbulence model'}, 'UserFile': {'type': 'string', 'default': 'unused', 'description': 'Name of the file that contains inputs for user-defined spectra or time series inputs (used only for "USRINP" and "TIMESR" models)'}, 'IECstandard': {'type': 'string', 'default': '1-ED3', 'enum': ['1-ED3', '1-ED2'], 'description': 'Number of IEC 61400-x standard (x=1,2, or 3 with optional 61400-1 edition number (i.e. "1-Ed2") )'}, 'ETMc': {'type': 'string', 'default': 'default', 'description': 'IEC Extreme Turbulence Model'}, 'WindProfileType': {'type': 'string', 'enum': ['LOG', 'PL', 'JET', 'H2L', 'API', 'USR', 'TS', 'IEC', 'LOG', 'default'], 'default': 'PL', 'description': "Velocity profile type ('LOG';'PL'=power law;'JET';'H2L'=Log law for TIDAL model;'API';'USR';'TS';'IEC'=PL on rotor disk, LOG elsewhere; or 'default')"}, 'ProfileFile': {'type': 'string', 'default': 'unused', 'description': "Name of the file that contains input profiles for WindProfileType='USR' and/or TurbModel='USRVKM' [-]"}, 'RefHt': {'type': 'number', 'default': 0, 'minimum': 0, 'maximum': 100000.0, 'unit': 'm', 'description': 'Height of the reference velocity (URef) [m]'}, 'URef': {'type': 'number', 'unit': 'm/s', 'default': -1, 'description': "URef is an input to TurbSim, but it's not honored in WEIS.  Please use the wind_speed input to each DLC instead."}, 'IECturbc': {'type': 'number', 'unit': '(-)', 'default': -1, 'description': 'Turbulence intensity (fraction) for custom DLCs, if default (-1), the class letter will be used'}, 'ZJetMax': {'type': 'string', 'default': 'default', 'description': 'Jet height [m] (used only for JET velocity profile, valid 70-490 m)'}, 'PLExp': {'type': 'number', 'default': -1, 'description': "Power law exponent [-] (or 'default'), if default (-1), the environment option shear_exp will be used for all DLCs"}, 'Z0': {'type': 'string', 'default': 'default', 'description': "Surface roughness length [m] (or 'default')"}, 'Latitude': {'type': 'string', 'default': 'default', 'description': "Site latitude [degrees] (or 'default')"}, 'RICH_NO': {'type': 'number', 'default': 0.05, 'description': 'Gradient Richardson number [-]'}, 'UStar': {'type': 'string', 'default': 'default', 'description': "Friction or shear velocity [m/s] (or 'default')"}, 'ZI': {'type': 'string', 'default': 'default', 'description': "Mixing layer depth [m] (or 'default')"}, 'PC_UW': {'type': 'string', 'default': 'default', 'description': "Hub mean uw Reynolds stress [m^2/s^2] (or 'default' or 'none')"}, 'PC_UV': {'type': 'string', 'default': 'default', 'description': "Hub mean uv Reynolds stress [m^2/s^2] (or 'default' or 'none')"}, 'PC_VW': {'type': 'string', 'default': 'default', 'description': "Hub mean vw Reynolds stress [m^2/s^2] (or 'default' or 'none')"}, 'SCMod1': {'type': 'string', 'default': 'default', 'description': "u-component coherence model ('GENERAL', 'IEC', 'API', 'NONE', or 'default')"}, 'SCMod2': {'type': 'string', 'default': 'default', 'description': "v-component coherence model ('GENERAL', 'IEC', 'NONE', or 'default')"}, 'SCMod3': {'type': 'string', 'default': 'default', 'description': "w-component coherence model ('GENERAL', 'IEC', 'NONE', or 'default')"}, 'InCDec1': {'type': 'string', 'default': 'default', 'description': "u-component coherence parameters for general or IEC models [-, m^-1] (e.g. '10.0  0.3e-3' in quotes) (or 'default')"}, 'InCDec2': {'type': 'string', 'default': 'default', 'description': "v-component coherence parameters for general or IEC models [-, m^-1] (e.g. '10.0  0.3e-3' in quotes) (or 'default')"}, 'InCDec3': {'type': 'string', 'default': 'default', 'description': "w-component coherence parameters for general or IEC models [-, m^-1] (e.g. '10.0  0.3e-3' in quotes) (or 'default')"}, 'CohExp': {'type': 'string', 'default': 'default', 'description': "Coherence exponent for general model [-] (or 'default')"}, 'CTEventPath': {'type': 'string', 'default': 'unused', 'description': 'Name of the path where event data files are located'}, 'CTEventFile': {'type': 'string', 'enum': ['LES', 'DNS', 'RANDOM'], 'default': 'RANDOM', 'description': 'Type of event files'}, 'Randomize': {'type': 'boolean', 'default': True, 'description': 'Randomize the disturbance scale and locations (true/false)'}, 'DistScl': {'type': 'number', 'default': 1.0, 'minimum': 0, 'maximum': 1.0, 'description': 'Disturbance scale [-] (ratio of event dataset height to rotor disk). (Ignored when Randomize = true.)'}, 'CTLy': {'type': 'number', 'default': 0.5, 'minimum': 0, 'maximum': 1.0, 'description': 'Fractional location of tower centerline from right [-] (looking downwind) to left side of the dataset. (Ignored when Randomize = true.)'}, 'CTLz': {'type': 'number', 'default': 0.5, 'minimum': 0, 'maximum': 1.0, 'description': 'Fractional location of hub height from the bottom of the dataset. [-] (Ignored when Randomize = true.)'}, 'CTStartTime': {'type': 'number', 'default': 30, 'minimum': 0, 'maximum': 1000.0, 'unit': 's', 'description': 'Minimum start time for coherent structures in RootName.cts'}}}}} is not valid under any of the given schemas
+
+Failed validating 'anyOf' in metaschema['properties']['properties']['additionalProperties']['properties']['properties']['additionalProperties']['properties']['items']:
+    {'anyOf': [{'$ref': '#'}, {'$ref': '#/definitions/schemaArray'}],
+     'default': True}
+
+On schema['properties']['DLC_driver']['properties']['DLCs']['items']:
+    {'type': 'object',
+     'properties': {'DLC': {'type': 'string',
+                            'default': '1.1',
+                            'enum': ['1.1',
+                                     '1.2',
+                                     '1.3',
+                                     '1.4',
+                                     '1.5',
+                                     '1.6',
+                                     '2.1',
+                                     '2.2',
+                                     '2.3',
+                                     '2.4',
+                                     '3.1',
+                                     '3.2',
+                                     '3.3',
+                                     '4.1',
+                                     '4.2',
+                                     '5.1',
+                                     '6.1',
+                                     '6.2',
+                                     '6.3',
+                                     '6.4',
+                                     '6.5',
+                                     '7.1',
+                                     '7.2',
+                                     '9.1',
+                                     '9.2',
+                                     '10.1',
+                                     '10.2',
+                                     '12.1',
+                                     'steady',
+                                     'step',
+                                     'ramp',
+                                     'AEP',
+                                     'freedecay'],
+                            'description': 'IEC design load case to run. '
+                                           'The DLCs currently supported '
+                                           'are 1.1, 1.2, 1.3, 1.4, 1.5, '
+                                           '1.6, 5.1, 6.1, 6.3, and 6.4'},
+                    'wind_speed': {'type': 'array',
+                                   'description': 'Wind speeds for this '
+                                                  'DLC. If these are '
+                                                  'defined, ws_bin_size is '
+                                                  'neglected.',
+                                   'default': [],
+                                   'items': {'type': 'number',
+                                             'unit': 'm/s',
+                                             'minItems': 1,
+                                             'minimum': 0.0,
+                                             'maximum': 200.0,
+                                             'uniqueItems': True}},
+                    'ws_bin_size': {'type': 'number',
+                                    'default': 2,
+                                    'minimum': 0.01,
+                                    'maximum': 20.0,
+                                    'unit': 'm/s',
+                                    'description': 'Size of the wind speed '
+                                                   'bin between cut in and '
+                                                   'cout out wind speeds. '
+                                                   'It usually can be set '
+                                                   'to 2 m/s. This entry '
+                                                   'is neglected if the '
+                                                   'wind speeds are '
+                                                   'specified by the '
+                                                   'user.'},
+                    'n_seeds': {'type': 'integer',
+                                'default': 1,
+                                'minimum': 1,
+                                'maximum': 100,
+                                'description': 'Number of turbulent wind '
+                                               'seeds drawn from the numpy '
+                                               'random integer generator. '
+                                               'This entry is neglected if '
+                                               'the entry wind_seed is '
+                                               'defined.  If DLC 1.4, '
+                                               'number of waves seeds.'},
+                    'n_azimuth': {'type': 'integer',
+                                  'default': 1,
+                                  'minimum': 1,
+                                  'maximum': 100,
+                                  'description': 'Number of azimuth '
+                                                 'initial conditions to '
+                                                 'use (primarily during '
+                                                 'DLC 5.1)'},
+                    'wind_seed': {'type': 'array',
+                                  'default': [],
+                                  'description': 'Array of turbulent wind '
+                                                 'seeds for TurbSim. If '
+                                                 'these are defined, '
+                                                 'n_seeds is neglected.',
+                                  'items': {'type': 'integer',
+                                            'unit': 'none',
+                                            'minItems': 1,
+                                            'uniqueItems': True}},
+                    'wave_seed': {'type': 'array',
+                                  'default': [],
+                                  'description': 'Wave random number '
+                                                 'generator seeds for '
+                                                 'HydroDyn',
+                                  'items': {'type': 'integer',
+                                            'unit': 'none',
+                                            'minItems': 1,
+                                            'uniqueItems': True}},
+                    'wind_heading': {'type': 'array',
+                                     'description': 'Wind direction from '
+                                                    'north. This array '
+                                                    'must currently have '
+                                                    'either length=1, i.e. '
+                                                    'one constant value, '
+                                                    'or the same length of '
+                                                    'the array wind_speed.',
+                                     'default': [0.0],
+                                     'items': {'type': 'number',
+                                               'unit': 'deg',
+                                               'minItems': 1,
+                                               'minimum': -180.0,
+                                               'maximum': 180.0}},
+                    'yaw_misalign': {'type': 'array',
+                                     'description': 'Alignment of the '
+                                                    'nacelle with respect '
+                                                    'to north. This array '
+                                                    'must currently have '
+                                                    'either length=1, i.e. '
+                                                    'one constant value, '
+                                                    'or the same length of '
+                                                    'the array wind_speed. '
+                                                    'Default depends on '
+                                                    'DLC, specified in '
+                                                    'dlc_generator.',
+                                     'items': {'type': 'number',
+                                               'unit': 'deg',
+                                               'minItems': 1,
+                                               'minimum': -180.0,
+                                               'maximum': 180.0}},
+                    'wave_spectrum': {'type': 'array',
+                                      'description': 'Spectrum of the '
+                                                     'waves. This array '
+                                                     'must currently have '
+                                                     'either length=1, '
+                                                     'i.e. one constant '
+                                                     'spectrum, or the '
+                                                     'same length of the '
+                                                     'array wind_speed',
+                                      'items': {'type': 'str',
+                                                'enum': ['JONSWAP', 'unit'],
+                                                'minItems': 1}},
+                    'turbine_status': {'type': 'string',
+                                       'description': 'Status of the '
+                                                      'turbine, it can be '
+                                                      'either operating, '
+                                                      'parked-idling, or '
+                                                      'parked-still. Each '
+                                                      'DLC come with its '
+                                                      'default turbine '
+                                                      'status specified by '
+                                                      'the standards.',
+                                       'default': 'operating',
+                                       'enum': ['operating',
+                                                'parked-idling',
+                                                'parked-still']},
+                    'wave_period': {'type': 'array',
+                                    'description': 'Period between waves. '
+                                                   'If this array is '
+                                                   'populated by the user, '
+                                                   'then the field '
+                                                   'metocean_conditions is '
+                                                   'neglected. If '
+                                                   'wave_period is not '
+                                                   'defined, '
+                                                   'metocean_conditions '
+                                                   'will be used, either '
+                                                   'in the values provided '
+                                                   'by the user or with '
+                                                   'its default values '
+                                                   '(the first option is '
+                                                   'highly recommended).',
+                                    'default': [],
+                                    'items': {'type': 'number',
+                                              'unit': 's',
+                                              'minItems': 1,
+                                              'minimum': 0.0,
+                                              'maximum': 1000.0}},
+                    'wave_height': {'type': 'array',
+                                    'description': 'Height of the waves. '
+                                                   'If this array is '
+                                                   'populated by the user, '
+                                                   'then the field '
+                                                   'metocean_conditions is '
+                                                   'neglected. If '
+                                                   'wave_height is not '
+                                                   'defined, '
+                                                   'metocean_conditions '
+                                                   'will be used, either '
+                                                   'in the values provided '
+                                                   'by the user or with '
+                                                   'its default values '
+                                                   '(the first option is '
+                                                   'highly recommended).',
+                                    'default': [],
+                                    'items': {'type': 'number',
+                                              'unit': 'm',
+                                              'minItems': 1,
+                                              'minimum': 0.0,
+                                              'maximum': 100.0}},
+                    'wave_heading': {'type': 'array',
+                                     'description': 'Heading of the waves '
+                                                    'with respect to '
+                                                    'north. This array '
+                                                    'must currently have '
+                                                    'either length=1, i.e. '
+                                                    'one constant value, '
+                                                    'or the same length of '
+                                                    'the array wind_speed',
+                                     'default': [0.0],
+                                     'items': {'type': 'number',
+                                               'unit': 'deg',
+                                               'minItems': 1,
+                                               'minimum': -180.0,
+                                               'maximum': 180.0}},
+                    'wave_gamma': {'type': 'array',
+                                   'description': 'Peak-shape parameter of '
+                                                  'incident wave spectrum. '
+                                                  'If 0, the default from '
+                                                  'IEC61400-3 / HydroDyn '
+                                                  'is used. This array '
+                                                  'must currently have '
+                                                  'either length=1, i.e. '
+                                                  'one constant value, or '
+                                                  'the same length of the '
+                                                  'array wind_speed',
+                                   'default': [0.0],
+                                   'items': {'type': 'number',
+                                             'minItems': 1,
+                                             'minimum': 0.0,
+                                             'maximum': 10.0}},
+                    'probabilities': {'type': 'array',
+                                      'description': 'Probability of '
+                                                     'occurrance for each '
+                                                     'case. This entry is '
+                                                     'relevant only for '
+                                                     'DLC 1.2 and 6.4. '
+                                                     'This array must '
+                                                     'currently have '
+                                                     'either length=1, '
+                                                     'i.e. one constant '
+                                                     'value, or the same '
+                                                     'length of the array '
+                                                     'wind_speed.',
+                                      'default': [1.0],
+                                      'items': {'type': 'number',
+                                                'minItems': 1,
+                                                'minimum': 0.0,
+                                                'maximum': 1.0}},
+                    'IEC_WindType': {'type': 'string',
+                                     'default': 'NTM',
+                                     'enum': ['NTM',
+                                              '1ETM',
+                                              '2ETM',
+                                              '3ETM',
+                                              '1EWM1',
+                                              '2EWM1',
+                                              '3EWM1',
+                                              '1EWM50',
+                                              '2EWM50',
+                                              '3EWM50',
+                                              'ECD',
+                                              'EDC',
+                                              'EOG',
+                                              'EWS',
+                                              'NWP',
+                                              'Steady',
+                                              'Ramp',
+                                              'Step'],
+                                     'description': 'IEC turbulence type '
+                                                    "('NTM'=normal, "
+                                                    "'xETM'=extreme "
+                                                    'turbulence, '
+                                                    "'xEWM1'=extreme "
+                                                    '1-year wind, '
+                                                    "'xEWM50'=extreme "
+                                                    '50-year wind, where '
+                                                    'x=wind turbine class '
+                                                    '1, 2, or 3), '
+                                                    "'ECD'=extreme "
+                                                    'coherent gust with '
+                                                    'direction change, '
+                                                    "'EDC'=extreme "
+                                                    'direction change, '
+                                                    "'EOG'=extreme "
+                                                    'operating gust. '
+                                                    'Normally the user '
+                                                    'does not need to '
+                                                    'define this entry, '
+                                                    "'EWS'='extreme wind "
+                                                    "shear'"},
+                    'analysis_time': {'type': 'number',
+                                      'unit': 's',
+                                      'minimum': 0.0,
+                                      'maximum': 10000.0,
+                                      'default': 0.0,
+                                      'description': 'This is the length '
+                                                     'of the simulation '
+                                                     'where outputs will '
+                                                     'be recorded. Its '
+                                                     'default is 600 '
+                                                     'seconds (10 minutes) '
+                                                     'for most '
+                                                     'simulations, except '
+                                                     'for the coherent '
+                                                     'cases where a '
+                                                     'shorter time window '
+                                                     'of 200 s is used.'},
+                    'transient_time': {'type': 'number',
+                                       'unit': 's',
+                                       'minimum': 0.0,
+                                       'maximum': 10000.0,
+                                       'default': 120.0,
+                                       'description': 'This is the length '
+                                                      'of the simulation '
+                                                      'where outputs will '
+                                                      'be discarded. Its '
+                                                      'default is 120 '
+                                                      'seconds (2 minutes) '
+                                                      'for all '
+                                                      'simulations. The '
+                                                      'total simulation '
+                                                      'time is the sum of '
+                                                      'analysis_time and '
+                                                      'transient_time'},
+                    'shutdown_time': {'type': 'number',
+                                      'unit': 's',
+                                      'minimum': 0.0,
+                                      'maximum': 100000.0,
+                                      'default': 9999,
+                                      'description': 'Time when shutdown '
+                                                     'occurs in DLC 5.1'},
+                    'wind_file': {'type': 'string',
+                                  'description': 'File path of custom wind '
+                                                 'file'},
+                    'TI_factor': {'type': 'number',
+                                  'unit': 'Percentage',
+                                  'description': 'The fraction of the TI, '
+                                                 'relative to the class '
+                                                 'defined in the geometry '
+                                                 'options or by '
+                                                 'turbulence_class'},
+                    'turbulence_class': {'type': 'string',
+                                         'enum': ['A+', 'A', 'B', 'C'],
+                                         'description': 'The class of '
+                                                        'turbulence, will '
+                                                        'overwrite class '
+                                                        'defined in '
+                                                        'geometry options. '
+                                                        'Only valid in the '
+                                                        'AEP DLC.'},
+                    'user_group': {'type': ['object', 'array'],
+                                   'items': {'type': 'object',
+                                             'description': 'Groups'},
+                                   'default': {},
+                                   'description': 'Define additional '
+                                                  'groups to alter DLCs or '
+                                                  'sweep additional '
+                                                  'paramters.  Users can '
+                                                  'input single values to '
+                                                  'change all of the '
+                                                  'simulations in a DLC, '
+                                                  'multiple values to add '
+                                                  'an additional group to '
+                                                  'sweep over, or a list '
+                                                  'of new groups in the '
+                                                  'yaml format.'},
+                    'turbulent_wind': {'type': 'object',
+                                       'default': {},
+                                       'description': 'These are all '
+                                                      'inputs to TurbSim. '
+                                                      'These inputs '
+                                                      'usually do not need '
+                                                      'to be set unless '
+                                                      'you are trying to '
+                                                      'customize a DLC',
+                                       'properties': {'flag': {'type': 'boolean',
+                                                               'default': False,
+                                                               'description': 'Flag '
+                                                                              'switching '
+                                                                              'between '
+                                                                              'steady '
+                                                                              'wind '
+                                                                              'and '
+                                                                              'turbulent '
+                                                                              'wind '
+                                                                              'grid '
+                                                                              'from '
+                                                                              'TurbSim.'},
+                                                      'Echo': {'type': 'boolean',
+                                                               'default': False,
+                                                               'description': 'Echo '
+                                                                              'input '
+                                                                              'data '
+                                                                              'to '
+                                                                              '<RootName>.ech '
+                                                                              '(flag)'},
+                                                      'RandSeed1': {'type': 'integer',
+                                                                    'default': 1,
+                                                                    'description': 'First '
+                                                                                   'random '
+                                                                                   'seed  '
+                                                                                   '(-2147483648 '
+                                                                                   'to '
+                                                                                   '2147483647)'},
+                                                      'RandSeed2': {'default': 'RANLUX',
+                                                                    'description': 'Second '
+                                                                                   'random '
+                                                                                   'seed  '
+                                                                                   '(-2147483648 '
+                                                                                   'to '
+                                                                                   '2147483647)'},
+                                                      'WrBHHTP': {'type': 'boolean',
+                                                                  'default': False,
+                                                                  'description': 'Output '
+                                                                                 'hub-height '
+                                                                                 'turbulence '
+                                                                                 'parameters '
+                                                                                 'in '
+                                                                                 'binary '
+                                                                                 'form  '
+                                                                                 '(Generates '
+                                                                                 'RootName.bin)'},
+                                                      'WrFHHTP': {'type': 'boolean',
+                                                                  'default': False,
+                                                                  'description': 'Output '
+                                                                                 'hub-height '
+                                                                                 'turbulence '
+                                                                                 'parameters '
+                                                                                 'in '
+                                                                                 'formatted '
+                                                                                 'form  '
+                                                                                 '(Generates '
+                                                                                 'RootName.dat)'},
+                                                      'WrADHH': {'type': 'boolean',
+                                                                 'default': False,
+                                                                 'description': 'Output '
+                                                                                'hub-height '
+                                                                                'time-series '
+                                                                                'data '
+                                                                                'in '
+                                                                                'AeroDyn '
+                                                                                'form  '
+                                                                                '(Generates '
+                                                                                'RootName.hh)'},
+                                                      'WrADFF': {'type': 'boolean',
+                                                                 'default': True,
+                                                                 'description': 'Output '
+                                                                                'full-field '
+                                                                                'time-series '
+                                                                                'data '
+                                                                                'in '
+                                                                                'TurbSim/AeroDyn '
+                                                                                'form '
+                                                                                '(Generates '
+                                                                                'RootName.bts)'},
+                                                      'WrBLFF': {'type': 'boolean',
+                                                                 'default': False,
+                                                                 'description': 'Output '
+                                                                                'full-field '
+                                                                                'time-series '
+                                                                                'data '
+                                                                                'in '
+                                                                                'BLADED/AeroDyn '
+                                                                                'form  '
+                                                                                '(Generates '
+                                                                                'RootName.wnd)'},
+                                                      'WrADTWR': {'type': 'boolean',
+                                                                  'default': False,
+                                                                  'description': 'Output '
+                                                                                 'tower '
+                                                                                 'time-series '
+                                                                                 'data '
+                                                                                 '(Generates '
+                                                                                 'RootName.twr)'},
+                                                      'WrFMTFF': {'type': 'boolean',
+                                                                  'default': False,
+                                                                  'description': 'Output '
+                                                                                 'full-field '
+                                                                                 'time-series '
+                                                                                 'data '
+                                                                                 'in '
+                                                                                 'formatted '
+                                                                                 '(readable) '
+                                                                                 'form  '
+                                                                                 '(Generates '
+                                                                                 'RootName.u, '
+                                                                                 'RootName.v, '
+                                                                                 'RootName.w)'},
+                                                      'WrACT': {'type': 'boolean',
+                                                                'default': False,
+                                                                'description': 'Output '
+                                                                               'coherent '
+                                                                               'turbulence '
+                                                                               'time '
+                                                                               'steps '
+                                                                               'in '
+                                                                               'AeroDyn '
+                                                                               'form '
+                                                                               '(Generates '
+                                                                               'RootName.cts)'},
+                                                      'Clockwise': {'type': 'boolean',
+                                                                    'default': False,
+                                                                    'description': 'Clockwise '
+                                                                                   'rotation '
+                                                                                   'looking '
+                                                                                   'downwind '
+                                                                                   '(used '
+                                                                                   'only '
+                                                                                   'for '
+                                                                                   'full-field '
+                                                                                   'binary '
+                                                                                   'files '
+                                                                                   '- '
+                                                                                   'not '
+                                                                                   'necessary '
+                                                                                   'for '
+                                                                                   'AeroDyn)'},
+                                                      'ScaleIEC': {'type': 'integer',
+                                                                   'enum': [0,
+                                                                            1,
+                                                                            2],
+                                                                   'default': 0,
+                                                                   'description': 'Scale '
+                                                                                  'IEC '
+                                                                                  'turbulence '
+                                                                                  'models '
+                                                                                  'to '
+                                                                                  'exact '
+                                                                                  'target '
+                                                                                  'standard '
+                                                                                  'deviation '
+                                                                                  '[0=no '
+                                                                                  'additional '
+                                                                                  'scaling; '
+                                                                                  '1=use '
+                                                                                  'hub '
+                                                                                  'scale '
+                                                                                  'uniformly; '
+                                                                                  '2=use '
+                                                                                  'individual '
+                                                                                  'scales]'},
+                                                      'NumGrid_Z': {'type': 'integer',
+                                                                    'default': 25,
+                                                                    'minimum': 5,
+                                                                    'maximum': 100,
+                                                                    'description': 'Vertical '
+                                                                                   'grid-point '
+                                                                                   'matrix '
+                                                                                   'dimension'},
+                                                      'NumGrid_Y': {'type': 'integer',
+                                                                    'default': 25,
+                                                                    'minimum': 5,
+                                                                    'maximum': 100,
+                                                                    'description': 'Horizontal '
+                                                                                   'grid-point '
+                                                                                   'matrix '
+                                                                                   'dimension'},
+                                                      'TimeStep': {'type': 'number',
+                                                                   'default': 0.05,
+                                                                   'minimum': 0.0001,
+                                                                   'maximum': 1.0,
+                                                                   'unit': 's',
+                                                                   'description': 'Time '
+                                                                                  'step '
+                                                                                  '[seconds]'},
+                                                      'UsableTime': {'type': 'string',
+                                                                     'default': 'ALL',
+                                                                     'description': 'Usable '
+                                                                                    'length '
+                                                                                    'of '
+                                                                                    'output '
+                                                                                    'time '
+                                                                                    'series '
+                                                                                    '[seconds] '
+                                                                                    '(program '
+                                                                                    'will '
+                                                                                    'add '
+                                                                                    'GridWidth/MeanHHWS '
+                                                                                    'seconds '
+                                                                                    'unless '
+                                                                                    'UsableTime '
+                                                                                    'is '
+                                                                                    "'ALL')"},
+                                                      'HubHt': {'type': 'number',
+                                                                'default': 0,
+                                                                'minimum': 0,
+                                                                'maximum': 500.0,
+                                                                'unit': 'm',
+                                                                'description': 'Hub '
+                                                                               'height '
+                                                                               '[m] '
+                                                                               '(should '
+                                                                               'be '
+                                                                               '> '
+                                                                               '0.5*GridHeight)'},
+                                                      'GridHeight': {'type': 'number',
+                                                                     'default': 0,
+                                                                     'minimum': 0,
+                                                                     'maximum': 500.0,
+                                                                     'unit': 'm',
+                                                                     'description': 'Grid '
+                                                                                    'height '
+                                                                                    '[m]'},
+                                                      'GridWidth': {'type': 'number',
+                                                                    'default': 0,
+                                                                    'minimum': 0,
+                                                                    'maximum': 500.0,
+                                                                    'unit': 'm',
+                                                                    'description': 'Grid '
+                                                                                   'width '
+                                                                                   '[m] '
+                                                                                   '(should '
+                                                                                   'be '
+                                                                                   '>= '
+                                                                                   '2*(RotorRadius+ShaftLength))'},
+                                                      'VFlowAng': {'type': 'number',
+                                                                   'default': 0.0,
+                                                                   'minimum': -90.0,
+                                                                   'maximum': 90.0,
+                                                                   'unit': 'deg',
+                                                                   'description': 'Vertical '
+                                                                                  'mean '
+                                                                                  'flow '
+                                                                                  '(uptilt) '
+                                                                                  'angle '
+                                                                                  '[degrees]'},
+                                                      'HFlowAng': {'type': 'number',
+                                                                   'default': 0.0,
+                                                                   'minimum': -90.0,
+                                                                   'maximum': 90.0,
+                                                                   'unit': 'deg',
+                                                                   'description': 'Horizontal '
+                                                                                  'mean '
+                                                                                  'flow '
+                                                                                  '(skew) '
+                                                                                  'angle '
+                                                                                  '[degrees]'},
+                                                      'TurbModel': {'type': 'string',
+                                                                    'enum': ['IECKAI',
+                                                                             'IECVKM',
+                                                                             'GP_LLJ',
+                                                                             'NWTCUP',
+                                                                             'SMOOTH',
+                                                                             'WF_UPW',
+                                                                             'WF_07D',
+                                                                             'WF_14D',
+                                                                             'TIDAL',
+                                                                             'API',
+                                                                             'USRINP',
+                                                                             'TIMESR',
+                                                                             'NONE'],
+                                                                    'default': 'IECKAI',
+                                                                    'description': 'Turbulence '
+                                                                                   'model'},
+                                                      'UserFile': {'type': 'string',
+                                                                   'default': 'unused',
+                                                                   'description': 'Name '
+                                                                                  'of '
+                                                                                  'the '
+                                                                                  'file '
+                                                                                  'that '
+                                                                                  'contains '
+                                                                                  'inputs '
+                                                                                  'for '
+                                                                                  'user-defined '
+                                                                                  'spectra '
+                                                                                  'or '
+                                                                                  'time '
+                                                                                  'series '
+                                                                                  'inputs '
+                                                                                  '(used '
+                                                                                  'only '
+                                                                                  'for '
+                                                                                  '"USRINP" '
+                                                                                  'and '
+                                                                                  '"TIMESR" '
+                                                                                  'models)'},
+                                                      'IECstandard': {'type': 'string',
+                                                                      'default': '1-ED3',
+                                                                      'enum': ['1-ED3',
+                                                                               '1-ED2'],
+                                                                      'description': 'Number '
+                                                                                     'of '
+                                                                                     'IEC '
+                                                                                     '61400-x '
+                                                                                     'standard '
+                                                                                     '(x=1,2, '
+                                                                                     'or '
+                                                                                     '3 '
+                                                                                     'with '
+                                                                                     'optional '
+                                                                                     '61400-1 '
+                                                                                     'edition '
+                                                                                     'number '
+                                                                                     '(i.e. '
+                                                                                     '"1-Ed2") '
+                                                                                     ')'},
+                                                      'ETMc': {'type': 'string',
+                                                               'default': 'default',
+                                                               'description': 'IEC '
+                                                                              'Extreme '
+                                                                              'Turbulence '
+                                                                              'Model'},
+                                                      'WindProfileType': {'type': 'string',
+                                                                          'enum': ['LOG',
+                                                                                   'PL',
+                                                                                   'JET',
+                                                                                   'H2L',
+                                                                                   'API',
+                                                                                   'USR',
+                                                                                   'TS',
+                                                                                   'IEC',
+                                                                                   'LOG',
+                                                                                   'default'],
+                                                                          'default': 'PL',
+                                                                          'description': 'Velocity '
+                                                                                         'profile '
+                                                                                         'type '
+                                                                                         "('LOG';'PL'=power "
+                                                                                         "law;'JET';'H2L'=Log "
+                                                                                         'law '
+                                                                                         'for '
+                                                                                         'TIDAL '
+                                                                                         "model;'API';'USR';'TS';'IEC'=PL "
+                                                                                         'on '
+                                                                                         'rotor '
+                                                                                         'disk, '
+                                                                                         'LOG '
+                                                                                         'elsewhere; '
+                                                                                         'or '
+                                                                                         "'default')"},
+                                                      'ProfileFile': {'type': 'string',
+                                                                      'default': 'unused',
+                                                                      'description': 'Name '
+                                                                                     'of '
+                                                                                     'the '
+                                                                                     'file '
+                                                                                     'that '
+                                                                                     'contains '
+                                                                                     'input '
+                                                                                     'profiles '
+                                                                                     'for '
+                                                                                     "WindProfileType='USR' "
+                                                                                     'and/or '
+                                                                                     "TurbModel='USRVKM' "
+                                                                                     '[-]'},
+                                                      'RefHt': {'type': 'number',
+                                                                'default': 0,
+                                                                'minimum': 0,
+                                                                'maximum': 100000.0,
+                                                                'unit': 'm',
+                                                                'description': 'Height '
+                                                                               'of '
+                                                                               'the '
+                                                                               'reference '
+                                                                               'velocity '
+                                                                               '(URef) '
+                                                                               '[m]'},
+                                                      'URef': {'type': 'number',
+                                                               'unit': 'm/s',
+                                                               'default': -1,
+                                                               'description': 'URef '
+                                                                              'is '
+                                                                              'an '
+                                                                              'input '
+                                                                              'to '
+                                                                              'TurbSim, '
+                                                                              'but '
+                                                                              "it's "
+                                                                              'not '
+                                                                              'honored '
+                                                                              'in '
+                                                                              'WEIS.  '
+                                                                              'Please '
+                                                                              'use '
+                                                                              'the '
+                                                                              'wind_speed '
+                                                                              'input '
+                                                                              'to '
+                                                                              'each '
+                                                                              'DLC '
+                                                                              'instead.'},
+                                                      'IECturbc': {'type': 'number',
+                                                                   'unit': '(-)',
+                                                                   'default': -1,
+                                                                   'description': 'Turbulence '
+                                                                                  'intensity '
+                                                                                  '(fraction) '
+                                                                                  'for '
+                                                                                  'custom '
+                                                                                  'DLCs, '
+                                                                                  'if '
+                                                                                  'default '
+                                                                                  '(-1), '
+                                                                                  'the '
+                                                                                  'class '
+                                                                                  'letter '
+                                                                                  'will '
+                                                                                  'be '
+                                                                                  'used'},
+                                                      'ZJetMax': {'type': 'string',
+                                                                  'default': 'default',
+                                                                  'description': 'Jet '
+                                                                                 'height '
+                                                                                 '[m] '
+                                                                                 '(used '
+                                                                                 'only '
+                                                                                 'for '
+                                                                                 'JET '
+                                                                                 'velocity '
+                                                                                 'profile, '
+                                                                                 'valid '
+                                                                                 '70-490 '
+                                                                                 'm)'},
+                                                      'PLExp': {'type': 'number',
+                                                                'default': -1,
+                                                                'description': 'Power '
+                                                                               'law '
+                                                                               'exponent '
+                                                                               '[-] '
+                                                                               '(or '
+                                                                               "'default'), "
+                                                                               'if '
+                                                                               'default '
+                                                                               '(-1), '
+                                                                               'the '
+                                                                               'environment '
+                                                                               'option '
+                                                                               'shear_exp '
+                                                                               'will '
+                                                                               'be '
+                                                                               'used '
+                                                                               'for '
+                                                                               'all '
+                                                                               'DLCs'},
+                                                      'Z0': {'type': 'string',
+                                                             'default': 'default',
+                                                             'description': 'Surface '
+                                                                            'roughness '
+                                                                            'length '
+                                                                            '[m] '
+                                                                            '(or '
+                                                                            "'default')"},
+                                                      'Latitude': {'type': 'string',
+                                                                   'default': 'default',
+                                                                   'description': 'Site '
+                                                                                  'latitude '
+                                                                                  '[degrees] '
+                                                                                  '(or '
+                                                                                  "'default')"},
+                                                      'RICH_NO': {'type': 'number',
+                                                                  'default': 0.05,
+                                                                  'description': 'Gradient '
+                                                                                 'Richardson '
+                                                                                 'number '
+                                                                                 '[-]'},
+                                                      'UStar': {'type': 'string',
+                                                                'default': 'default',
+                                                                'description': 'Friction '
+                                                                               'or '
+                                                                               'shear '
+                                                                               'velocity '
+                                                                               '[m/s] '
+                                                                               '(or '
+                                                                               "'default')"},
+                                                      'ZI': {'type': 'string',
+                                                             'default': 'default',
+                                                             'description': 'Mixing '
+                                                                            'layer '
+                                                                            'depth '
+                                                                            '[m] '
+                                                                            '(or '
+                                                                            "'default')"},
+                                                      'PC_UW': {'type': 'string',
+                                                                'default': 'default',
+                                                                'description': 'Hub '
+                                                                               'mean '
+                                                                               'uw '
+                                                                               'Reynolds '
+                                                                               'stress '
+                                                                               '[m^2/s^2] '
+                                                                               '(or '
+                                                                               "'default' "
+                                                                               'or '
+                                                                               "'none')"},
+                                                      'PC_UV': {'type': 'string',
+                                                                'default': 'default',
+                                                                'description': 'Hub '
+                                                                               'mean '
+                                                                               'uv '
+                                                                               'Reynolds '
+                                                                               'stress '
+                                                                               '[m^2/s^2] '
+                                                                               '(or '
+                                                                               "'default' "
+                                                                               'or '
+                                                                               "'none')"},
+                                                      'PC_VW': {'type': 'string',
+                                                                'default': 'default',
+                                                                'description': 'Hub '
+                                                                               'mean '
+                                                                               'vw '
+                                                                               'Reynolds '
+                                                                               'stress '
+                                                                               '[m^2/s^2] '
+                                                                               '(or '
+                                                                               "'default' "
+                                                                               'or '
+                                                                               "'none')"},
+                                                      'SCMod1': {'type': 'string',
+                                                                 'default': 'default',
+                                                                 'description': 'u-component '
+                                                                                'coherence '
+                                                                                'model '
+                                                                                "('GENERAL', "
+                                                                                "'IEC', "
+                                                                                "'API', "
+                                                                                "'NONE', "
+                                                                                'or '
+                                                                                "'default')"},
+                                                      'SCMod2': {'type': 'string',
+                                                                 'default': 'default',
+                                                                 'description': 'v-component '
+                                                                                'coherence '
+                                                                                'model '
+                                                                                "('GENERAL', "
+                                                                                "'IEC', "
+                                                                                "'NONE', "
+                                                                                'or '
+                                                                                "'default')"},
+                                                      'SCMod3': {'type': 'string',
+                                                                 'default': 'default',
+                                                                 'description': 'w-component '
+                                                                                'coherence '
+                                                                                'model '
+                                                                                "('GENERAL', "
+                                                                                "'IEC', "
+                                                                                "'NONE', "
+                                                                                'or '
+                                                                                "'default')"},
+                                                      'InCDec1': {'type': 'string',
+                                                                  'default': 'default',
+                                                                  'description': 'u-component '
+                                                                                 'coherence '
+                                                                                 'parameters '
+                                                                                 'for '
+                                                                                 'general '
+                                                                                 'or '
+                                                                                 'IEC '
+                                                                                 'models '
+                                                                                 '[-, '
+                                                                                 'm^-1] '
+                                                                                 '(e.g. '
+                                                                                 "'10.0  "
+                                                                                 "0.3e-3' "
+                                                                                 'in '
+                                                                                 'quotes) '
+                                                                                 '(or '
+                                                                                 "'default')"},
+                                                      'InCDec2': {'type': 'string',
+                                                                  'default': 'default',
+                                                                  'description': 'v-component '
+                                                                                 'coherence '
+                                                                                 'parameters '
+                                                                                 'for '
+                                                                                 'general '
+                                                                                 'or '
+                                                                                 'IEC '
+                                                                                 'models '
+                                                                                 '[-, '
+                                                                                 'm^-1] '
+                                                                                 '(e.g. '
+                                                                                 "'10.0  "
+                                                                                 "0.3e-3' "
+                                                                                 'in '
+                                                                                 'quotes) '
+                                                                                 '(or '
+                                                                                 "'default')"},
+                                                      'InCDec3': {'type': 'string',
+                                                                  'default': 'default',
+                                                                  'description': 'w-component '
+                                                                                 'coherence '
+                                                                                 'parameters '
+                                                                                 'for '
+                                                                                 'general '
+                                                                                 'or '
+                                                                                 'IEC '
+                                                                                 'models '
+                                                                                 '[-, '
+                                                                                 'm^-1] '
+                                                                                 '(e.g. '
+                                                                                 "'10.0  "
+                                                                                 "0.3e-3' "
+                                                                                 'in '
+                                                                                 'quotes) '
+                                                                                 '(or '
+                                                                                 "'default')"},
+                                                      'CohExp': {'type': 'string',
+                                                                 'default': 'default',
+                                                                 'description': 'Coherence '
+                                                                                'exponent '
+                                                                                'for '
+                                                                                'general '
+                                                                                'model '
+                                                                                '[-] '
+                                                                                '(or '
+                                                                                "'default')"},
+                                                      'CTEventPath': {'type': 'string',
+                                                                      'default': 'unused',
+                                                                      'description': 'Name '
+                                                                                     'of '
+                                                                                     'the '
+                                                                                     'path '
+                                                                                     'where '
+                                                                                     'event '
+                                                                                     'data '
+                                                                                     'files '
+                                                                                     'are '
+                                                                                     'located'},
+                                                      'CTEventFile': {'type': 'string',
+                                                                      'enum': ['LES',
+                                                                               'DNS',
+                                                                               'RANDOM'],
+                                                                      'default': 'RANDOM',
+                                                                      'description': 'Type '
+                                                                                     'of '
+                                                                                     'event '
+                                                                                     'files'},
+                                                      'Randomize': {'type': 'boolean',
+                                                                    'default': True,
+                                                                    'description': 'Randomize '
+                                                                                   'the '
+                                                                                   'disturbance '
+                                                                                   'scale '
+                                                                                   'and '
+                                                                                   'locations '
+                                                                                   '(true/false)'},
+                                                      'DistScl': {'type': 'number',
+                                                                  'default': 1.0,
+                                                                  'minimum': 0,
+                                                                  'maximum': 1.0,
+                                                                  'description': 'Disturbance '
+                                                                                 'scale '
+                                                                                 '[-] '
+                                                                                 '(ratio '
+                                                                                 'of '
+                                                                                 'event '
+                                                                                 'dataset '
+                                                                                 'height '
+                                                                                 'to '
+                                                                                 'rotor '
+                                                                                 'disk). '
+                                                                                 '(Ignored '
+                                                                                 'when '
+                                                                                 'Randomize '
+                                                                                 '= '
+                                                                                 'true.)'},
+                                                      'CTLy': {'type': 'number',
+                                                               'default': 0.5,
+                                                               'minimum': 0,
+                                                               'maximum': 1.0,
+                                                               'description': 'Fractional '
+                                                                              'location '
+                                                                              'of '
+                                                                              'tower '
+                                                                              'centerline '
+                                                                              'from '
+                                                                              'right '
+                                                                              '[-] '
+                                                                              '(looking '
+                                                                              'downwind) '
+                                                                              'to '
+                                                                              'left '
+                                                                              'side '
+                                                                              'of '
+                                                                              'the '
+                                                                              'dataset. '
+                                                                              '(Ignored '
+                                                                              'when '
+                                                                              'Randomize '
+                                                                              '= '
+                                                                              'true.)'},
+                                                      'CTLz': {'type': 'number',
+                                                               'default': 0.5,
+                                                               'minimum': 0,
+                                                               'maximum': 1.0,
+                                                               'description': 'Fractional '
+                                                                              'location '
+                                                                              'of '
+                                                                              'hub '
+                                                                              'height '
+                                                                              'from '
+                                                                              'the '
+                                                                              'bottom '
+                                                                              'of '
+                                                                              'the '
+                                                                              'dataset. '
+                                                                              '[-] '
+                                                                              '(Ignored '
+                                                                              'when '
+                                                                              'Randomize '
+                                                                              '= '
+                                                                              'true.)'},
+                                                      'CTStartTime': {'type': 'number',
+                                                                      'default': 30,
+                                                                      'minimum': 0,
+                                                                      'maximum': 1000.0,
+                                                                      'unit': 's',
+                                                                      'description': 'Minimum '
+                                                                                     'start '
+                                                                                     'time '
+                                                                                     'for '
+                                                                                     'coherent '
+                                                                                     'structures '
+                                                                                     'in '
+                                                                                     'RootName.cts'}}}}}
+sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
