@@ -19,6 +19,7 @@ FOLDERS_TO_ARCHIVE=(
     "stage-3-semisub/outputs"
     "stage-3-semisub/outputs_of_newFix"
     "stage-3.5-semisubCCD/outputs_of_newFix"
+    "stage-4-dlcs/outputs"
     # "examples"
     # "docs"
     # Add more folders here as needed
