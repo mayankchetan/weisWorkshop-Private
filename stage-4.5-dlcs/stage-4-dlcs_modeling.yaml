@@ -136,19 +136,19 @@ DLC_driver:
     DLCs:
         - DLC: "1.1"
           n_seeds: 6
-          transient_time: 100.
+          transient_time: 0.
           analysis_time: 600.
         - DLC: "1.4"
           wind_speed: [9.158, 11.158, 13.158]
         #   n_seeds: 6
         - DLC: "1.6"    # kestrel
           n_seeds: 6
-          transient_time: 120.
+          transient_time: 0.
           analysis_time: 600.
         - DLC: "5.1"
         - DLC: "6.1"
           n_seeds: 6
-          transient_time: 120.
+          transient_time: 0.
           analysis_time: 600.
         #   turbulent_wind:
             # GridHeight: 400

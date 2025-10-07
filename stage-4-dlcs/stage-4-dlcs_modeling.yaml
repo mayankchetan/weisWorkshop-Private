@@ -17,8 +17,6 @@ WISDEM:
         n_tsr_perf_surfaces: 20
         spar_cap_ss: spar_cap_ss
         spar_cap_ps: spar_cap_ps
-        # te_ss: TE_reinforcement_SS
-        # te_ps: TE_reinforcement_PS
         peak_thrust_shaving: True
         thrust_shaving_coeff: 0.8
     TowerSE:
@@ -86,42 +84,11 @@ OpenFAST: # Options for WEIS fidelity level 3 = nonlinear time domain
         BEM_Mod: 2
         UA_Mod: 2
         IntegrationMethod: 4
-    # HydroDyn:
-    #     WvLowCOff: 0.15708
-    #     WvHiCOff: 3.2
-    #     WaveSeed1: 123456789
-    #     AddBQuad1: [9.23e5, 0.0, 0.0, 0.0, -8.92e6, 0.0]
-    #     AddBQuad2: [0.0, 9.23e5, 0.0, 8.92e6, 0.0, 0.0]
-    #     AddBQuad3: [0.0, 0.0, 2.3e6, 0.0, 0.0, 0.0]
-    #     AddBQuad4: [0.0, 8.92e6, 0.0, 1.68e10, 0.0, 0.0]
-    #     AddBQuad5: [-8.92e6, 0.0, 0.0, 0.0, 1.68e10, 0.0]
-    #     AddBQuad6: [0.0, 0.0, 0.0, 0.0, 0.0, 4.8e10]
-    #     PotMod: 1
-        # WaveMod: 0
-        # PotFile: examples/01_aeroelasticse/OpenFAST_models/IEA-15-240-RWT/IEA-15-240-RWT-UMaineSemi/HydroData/IEA-15-240-RWT-UMaineSemi
-# Level1:
-#     flag: True
-#     potential_model_override: 0
-#     trim_ballast: 2
-#     heave_tol: 1
-#     save_designs: True
+
 ROSCO:
     flag: True
-    # SD_Mode: 0
-    # PS_Mode: 3
-    # ps_percent: 0.9
-    # F_LPFType: 2
-    # F_NotchType: 2
-    # Fl_Mode: 2 
     tuning_yaml: iea20_semisub_rosco.yaml
-    # zeta_pc: [1]
-    # omega_pc: [0.1]
-    # U_pc: [12]
-    # zeta_vs: 0.85                     # Torque controller desired damping ratio [-]
-    # omega_vs: 0.12  
-    # twr_freq: 3.2
-    # ptfm_freq: 0.2
-    # Kp_float: -10
+
 DLC_driver:
     metocean_conditions:
         wind_speed: [4., 6., 8., 10., 12., 14., 16., 18., 20., 22., 24.]
@@ -140,8 +107,7 @@ DLC_driver:
           analysis_time: 600.
         - DLC: "1.4"
           wind_speed: [9.158, 11.158, 13.158]
-        #   n_seeds: 6
-        - DLC: "1.6"    # kestrel
+        - DLC: "1.6"
           n_seeds: 6
           transient_time: 120.
           analysis_time: 600.
@@ -150,6 +116,3 @@ DLC_driver:
           n_seeds: 6
           transient_time: 120.
           analysis_time: 600.
-        #   turbulent_wind:
-            # GridHeight: 400
-            # GridWidth: 400

@@ -3,15 +3,6 @@ general:
     fname_output: stage-3-semisub_raft
 
 design_variables:
-    # tower:
-    #     outer_diameter:
-    #         flag: False
-    #         lower_bound: 4.0
-    #         upper_bound: 10.0
-    #     layer_thickness:
-    #         flag: False
-    #         lower_bound: 4.e-3
-    #         upper_bound: 2.e-1
     floating:
         joints:
             flag: True
@@ -80,10 +71,7 @@ constraints:
         buoyancy:
             flag: False
         stress:
-            flag: False # Set this to true but with the upper bound value of 22MW upwind
-            upper_bound: 10.0
-            elements: [column1, column2, column3, Y_pontoon_lower1, Y_pontoon_lower2, Y_pontoon_lower3]
-            memid: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9]
+            flag: False
         global_buckling:
             flag: False
         shell_buckling:
@@ -110,15 +98,6 @@ constraints:
 merit_figure: structural_mass
 
 driver:
-    # optimization:
-    #     flag: True         # Flag to enable optimization
-    #     tol: 1e-4         # Optimality tolerance
-    #     max_major_iter: 200
-    #     max_minor_iter: 10000
-    #     step_size: 1e-4
-    #     step_calc: rel_avg
-    #     solver: SNOPT       # Optimization solver. Other options are 'SLSQP' - 'CONMIN'
-
     optimization:
         flag: True         # Flag to enable optimization
         tol: 1.e-3         # Optimality tolerance

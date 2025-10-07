@@ -9,14 +9,10 @@ design_variables:
             twist:
                 flag: False # Flag to optimize the twist
                 inverse: True # Flag to determine twist from a desired angle of attack
-                inverse_target: 'max_efficiency' # Twist generates angles of attack 
-                # corresponding to 'max_efficiency' or 'stall_margin'
-                n_opt: 10 # Number of control points along blade span. During inverse design, 
-                # twist is smoothened with a spline with these
-                max_decrease: 0.08722222222222221 # Maximum decrease for the twist 
-                # in [rad] at the n_opt locations. Only used if flag is set to True
-                max_increase: 0.08722222222222221 # Maximum increase for the twist 
-                # in [rad] at the n_opt locations. Only used if flag is set to True
+                inverse_target: 'max_efficiency' # Twist generates angles of attack # corresponding to 'max_efficiency' or 'stall_margin'
+                n_opt: 10 # Number of control points along blade span. During inverse design, # twist is smoothened with a spline with these
+                max_decrease: 0.08722222222222221 # Maximum decrease for the twist in [rad] at the n_opt locations. Only used if flag is set to True
+                max_increase: 0.08722222222222221 # Maximum increase for the twist in [rad] at the n_opt locations. Only used if flag is set to True
                 index_start: 2 # Lock the first two DVs from blade root
                 index_end: 10 # All DVs close to blade tip are active
 
@@ -31,12 +27,6 @@ design_variables:
                 flag: True
                 af_start: 4
         structure:
-            # - layer_name: Shell_skin
-            #   n_opt: 8               # Number of control points along blade span
-            #   max_decrease: 0.2      # Maximum nondimensional decrease at the n_opt locations
-            #   max_increase: 5.       # Maximum nondimensional increase at the n_opt locations
-            #   index_start: 1         # Lock the first DV from blade root
-            #   index_end: 8           # The last DV at blade tip is locked
             - layer_name: spar_cap_ss
               n_opt: 8               # Number of control points along blade span
               max_decrease: 0.2      # Maximum nondimensional decrease at the n_opt locations
@@ -49,12 +39,6 @@ design_variables:
               max_increase: 5.       # Maximum nondimensional increase at the n_opt locations
               index_start: 1         # Lock the first DV from blade root
               index_end: 7           # The last DV at blade tip is locked
-            # - layer_name: LE_reinforcement
-            #   n_opt: 8               # Number of control points along blade span
-            #   max_decrease: 0.2      # Maximum nondimensional decrease at the n_opt locations
-            #   max_increase: 5.       # Maximum nondimensional increase at the n_opt locations
-            #   index_start: 1         # Lock the first DV from blade root
-            #   index_end: 7           # The last DV at blade tip is locked
             - layer_name: te_reinforcement_ss
               n_opt: 8               # Number of control points along blade span
               max_decrease: 0.2      # Maximum nondimensional decrease at the n_opt locations
@@ -67,12 +51,6 @@ design_variables:
               max_increase: 5.       # Maximum nondimensional increase at the n_opt locations
               index_start: 1         # Lock the first DV from blade root
               index_end: 7           # The last DV at blade tip is locked
-            # - layer_name: Shell_skin_inner
-            #   n_opt: 8               # Number of control points along blade span
-            #   max_decrease: 0.2      # Maximum nondimensional decrease at the n_opt locations
-            #   max_increase: 5.       # Maximum nondimensional increase at the n_opt locations
-            #   index_start: 1         # Lock the first DV from blade root
-            #   index_end: 8           # The last DV at blade tip is locked
 
 # figure of merit
 merit_figure: LCOE
@@ -115,24 +93,6 @@ driver:
         solver: SLSQP       # Optimization solver. Other options are 'SLSQP' - 'CONMIN'
         step_size: 1.e-3    # Step size for finite differencing
         form: central       # Finite differencing mode, either forward or central
-    # optimization:
-    #     flag: True         # Flag to enable optimization
-    #     tol: 1.e-3         # Optimality tolerance
-    #     max_iter: 50         # Maximum number of iterations
-    #     solver: SLSQP       # Optimization solver. Other options are 'SLSQP' - 'CONMIN'
-    #     penalty_exponent: 2.0     # constraint penalty exponent
-    #     # penalty_parameter: 2.0    # constraint penalty exponent
-    #     run_parallel: True
-    # optimization:
-    #     flag: True          # Flag to enable optimization
-    #     tol: 1.e-6          # Optimality tolerance
-    #     max_major_iter: 500
-    #     max_minor_iter: 10000
-    #     solver: SNOPT       # Optimization solver. Other options are 'SLSQP' - 'CONMIN'
-    #     step_calc: 'rel_avg'
-    #     step_size: 1.e-4    # Step size for finite differencing
-    #     form: central       # Finite differencing mode, either forward or central
-
 
 recorder:
     flag: True              # Flag to activate OpenMDAO recorder
