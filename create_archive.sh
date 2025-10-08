@@ -12,15 +12,15 @@ NC='\033[0m' # No Color
 
 # Define folders to archive (edit this list as needed)
 FOLDERS_TO_ARCHIVE=(
-    "stage-0-baseline/outputs"
-    "stage-1-aeroStruct/outputs"
+    "stage-0-baseline/outputs_preCompute"
+    "stage-1-aeroStruct/outputs_preCompute"
     "stage-1-aeroStruct/outputs_nonOpti"
-    "stage-2-controller/outputs"
-    "stage-3-semisub/outputs"
-    "stage-3-semisub/outputs_of_newFix"
-    "stage-3.5-semisubCCD/outputs_of_newFix"
-    "stage-4-dlcs/outputs"
-    "stage-4.5-dlcs/outputs"
+    "stage-2-controller/outputs_preCompute"
+    "stage-3-semisub/outputs_preCompute"
+    "stage-3-semisub/outputs_of_preCompute"
+    "stage-3.5-semisubCCD/outputs_of_preCompute"
+    "stage-4-dlcs/outputs_preCompute"
+    "stage-4.5-dlcs/outputs_preCompute"
     # "examples"
     # "docs"
     # Add more folders here as needed
