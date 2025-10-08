@@ -7,3 +7,6 @@
 *.ech
 *.dat
 *.fst
+*DISCON.IN
+*_Cp_Ct_Cq.txt
+*.stdOut
